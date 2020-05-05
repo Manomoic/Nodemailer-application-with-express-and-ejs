@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.1/css/mdb.min.css" rel="stylesheet">
+
+    <title>Nodemailer App</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+
+    <div class="container">
+
+        <!-- Section: Contact v.1 -->
+        <section class="my-5">
+
+            <!-- Grid row -->
+            <div class="row">
+
+                <!-- Grid column -->
+                <div class="col-md-12 mb-lg-0 mb-4">
+
+                    <!-- Form with header -->
+                    <div class="card mx-auto" style="width: 30rem;">
+                        <div class="card-body">
+                            <!-- Header -->
+                            <div class="form-header">
+                                <h3 class="mt-2 font-weight-light text-center"> Write to us:</h3>
+                            </div>
+
+                            <!-- Form Validation -->
+                            <%- include ('./messages') -%> 
+                            <!-- Body -->
+                            <form action="send_mail" method="POST">
+
+                                <div class="md-form">
+                                    <input type="text" 
+                                    name="email" 
+                                    class="form-control" 
+                                    autocomplete="off" 
+                                    value="<%= typeof email != 'undefined' ? email : '' %>" />
+                                    <label for="form-email">Your email</label>
+                                </div>
+                                <div class="md-form">
+                                    <input type="text" 
+                                    name="subject" 
+                                    class="form-control" value="<%= typeof subject != 'undefined' ? subject : '' %>" />
+                                    <label for="form-Subject">Subject</label>
+                                </div>
+                                <div class="md-form">
+                                    <textarea name="message" 
+                                    class="form-control md-textarea"
+                                    value="<%= typeof message != 'undefined' ? message : '' %>"></textarea>
+                                    <label for="form-text">Send message</label>
+                                </div>
+                                <div class="text-center">
+                                    <button class="btn btn-sm btn-block btn-light-blue" type="submit">Submit</button>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+                    <!-- Form with header -->
+
+                </div>
+                <!-- Grid column -->
+
+            </div>
+            <!-- Grid row -->
+
+        </section>
+        <!-- Section: Contact v.1 -->
+
+    </div>
+
+    <footer class="footer mx-auto py-3">
+        <div class="container">
+            <span class="text-muted text-center font-weight-light">
+                Application Created By Jack Manamela @
+                <small id="currentYear"></small>
+            </span>
+        </div>
+    </footer>
+
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js">
+</script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js">
+</script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.1/js/mdb.min.js">
+</script>
+    <script>
+        const date = new Date();
+        document.getElementById('currentYear').innerHTML = date.getFullYear();
+    </script>
+</body>
+
+</html>
